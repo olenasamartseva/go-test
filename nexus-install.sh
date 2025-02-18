@@ -22,7 +22,7 @@ if [ -z "$NONINTERACTIVE" ] && [ "${#PROVER_ID}" -ne "28" ]; then
     while [ ! ${#PROVER_ID} -eq "0" ]; do
         if [ ${#PROVER_ID} -eq "5" ]; then
             if [ -f "$NEXUS_HOME/prover-id" ]; then
-                echo Copying $NEXUS_HOME/prover-id to $NEXUS_HOME/prover-id.bak
+                echo Copyingg $NEXUS_HOME/prover-id to $NEXUS_HOME/prover-id.bak
                 cp $NEXUS_HOME/prover-id $NEXUS_HOME/prover-id.bak
             fi
             echo "$PROVER_ID" > $NEXUS_HOME/prover-id
