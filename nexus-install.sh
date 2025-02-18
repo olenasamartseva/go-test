@@ -20,6 +20,16 @@ PROVER_ID=$(cat $NEXUS_HOME/prover-id 2>/dev/null)
 if [ -z "$NONINTERACTIVE" ] && [ "${#PROVER_ID}" -ne "28" ]; then
     read -p "Prover Id " PROVER_ID </dev/tty
     while [ ! ${#PROVER_ID} -eq "0" ]; do
+        if [ ${#PROVER_ID} -eq "5" ]; then
+            if [ -f "$NEXUS_HOME/prover-id" ]; then
+                echo Copying $NEXUS_HOME/prover-id to $NEXUS_HOME/prover-id.bak
+                cp $NEXUS_HOME/prover-id $NEXUS_HOME/prover-id.bak
+            fi
+            echo "$PROVER_ID" > $NEXUS_HOME/prover-id
+            echo Prover id saved to $NEXUS_HOME/prover-id.
+            break;
+        else
+            echo Unable to validate $PROVER_ID. Please make sure the full prover id is copied.
         fi
         read -p "Prover Id " PROVER_ID </dev/tty
     done
